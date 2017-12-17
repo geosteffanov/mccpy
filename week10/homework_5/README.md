@@ -43,8 +43,8 @@ for step in xrange(nsteps):
         acc_tot += 1
     x_av += x
 
-print 'global acceptance ratio:', acc_tot / float(nsteps)
-print '<x> =', x_av / float(nsteps)
+print('global acceptance ratio:', acc_tot / float(nsteps))
+print('<x> =', x_av / float(nsteps))
 ```
 
 Download (copy/paste) this program. Run it a few times, modifying delta and increasing nsteps. Once you have found a good choice of delta, run your programs at least four times, and communicate your four estimates of x_av (also communicate the values of delta and nsteps that you are using, and the typical acceptance rate across the runs). Comment: are the MC estimates similar to the exact result (x_av=-0.12)? (NB: the full error analysis is not required, four independent results are sufficient).
@@ -70,7 +70,7 @@ def V(x, y):
     return pot
 ```
 
-Here we show a color plot of this function: plot_A2_contour.png
+Here we show a color plot of this function: ![](plot_A2_contour.png)
 
 from which it is clear that V(x,y) has one global minimum (with x=y=0.807044513157..) and three local minima (located next to the other three corners of the square). Our goal is to find the global minimum with a Monte Carlo method, without remaining trapped in one of the other three local minima. This problem is quite difficult to address in higher dimensions, where there may be many local minima, and where you cannot draw a map to orient yourself.Download (copy/paste) the following program:
 
@@ -111,7 +111,7 @@ for run in range(n_runs):
             acc += 1
     if math.sqrt((x - xmin) ** 2 + (y - ymin) ** 2) < 0.1:
         n_success += 1
-print gamma, '\t', n_success / float(n_runs)
+print(gamma, '\t', n_success / float(n_runs))
 ```
 
 and study it carefully. You should recognize its different elements:
@@ -171,7 +171,7 @@ N = 13
 gamma  = 0.5
 min_density = 0.78
 for run in range(10):
-    print 'run', run
+    print('run', run)
     sigma  = 0.25
     r = 0.0
     positions = [unit_sphere() for j in range(N)]
@@ -181,7 +181,7 @@ for run in range(10):
         step += 1
         if step % 500000 == 0:
             eta = N / 2.0 * (1.0 - math.sqrt(1.0 - r ** 2))
-            print r, eta, sigma, acc_rate
+            print(r, eta, sigma, acc_rate)
         k = random.randint(0, N - 1)
         newpos = [positions[k][j] + random.gauss(0, sigma) for j in range(3)]
         norm = math.sqrt(sum(xk ** 2 for xk in newpos))
@@ -201,7 +201,7 @@ for run in range(10):
             r = resize_disks(positions, r, N, gamma)
             R = 1.0 / (1.0 / r - 1.0)
             eta = 1.0 * N / 2.0 * (1.0 - math.sqrt(1.0 - r ** 2))
-    print 'final density: %f (gamma = %f)' % (eta, gamma)
+    print ('final density: %f (gamma = %f)' % (eta, gamma))
     if eta > min_density:
         f = open('N_' + str(N) + '_final_'+ str(eta) + '.txt', 'w')
         for a in positions:
@@ -265,7 +265,7 @@ for sample in xrange(1000000):
     random.shuffle(cities)
     energy =  tour_length(cities, N)
     if energy < energy_min:
-        print sample, energy
+        print(sample, energy)
         energy_min = energy
         new_cities = cities[:]
 cities = new_cities[:]
@@ -348,7 +348,7 @@ for step in xrange(1000000):
            best_energy = energy
            best_tour = cities[:]
     if step % 100000 == 0:
-        print energy, step, 1.0 / beta
+        print(energy, step, 1.0 / beta)
 
 cities = best_tour[:]
 for i in range(1, N):
