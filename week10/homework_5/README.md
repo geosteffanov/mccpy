@@ -130,7 +130,7 @@ These are common features for a simulated-annealing program, and you will recogn
 ## A3
 
 We now imagine a "Gedankenexperiment" (thought experiment) of a hard disk in the container shown below. An actual implementation is neither required nor expected. The container has two boxes connected through a hard bottleneck. All its contours, and in particular the bottleneck, are made of hard walls.
-see 
+
 ![](container.png)
 
 We imagine solving the problem of finding the radius of the largest disk that can be placed into this container. To do so, we perform simulated annealing for one hard disk in this container, with displacements (x,y) -> (x + delx, y + dely), where delx, dely (that can be positive or negative) are much smaller than the dimensions of the container.
