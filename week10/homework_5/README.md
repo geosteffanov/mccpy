@@ -130,7 +130,8 @@ These are common features for a simulated-annealing program, and you will recogn
 ## A3
 
 We now imagine a "Gedankenexperiment" (thought experiment) of a hard disk in the container shown below. An actual implementation is neither required nor expected. The container has two boxes connected through a hard bottleneck. All its contours, and in particular the bottleneck, are made of hard walls.
-see container.png
+see 
+![](container.png)
 
 We imagine solving the problem of finding the radius of the largest disk that can be placed into this container. To do so, we perform simulated annealing for one hard disk in this container, with displacements (x,y) -> (x + delx, y + dely), where delx, dely (that can be positive or negative) are much smaller than the dimensions of the container.
 
@@ -187,7 +188,7 @@ for run in range(10):
         norm = math.sqrt(sum(xk ** 2 for xk in newpos))
         newpos = [xk / norm for xk in newpos]
         new_min_dist = min([math.sqrt(sum((positions[l][j] - newpos[j]) ** 2 \
-                       for j in range(3))) for l in range(k) + range(k + 1, N)])
+                       for j in range(3))) for l in list(range(k)) + list(range(k + 1, N))])
         if new_min_dist > 2.0 * r:
             positions = positions[:k] + [newpos] + positions[k + 1:]
             n_acc += 1
